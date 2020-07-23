@@ -1,0 +1,35 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: products-service
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 2
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+    eureka-server-port: 8000
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]
+  endpoint:
+    shutdown:
+      enabled: true
+
+logging:
+  level:
+    com.self.sprintboot.learning.employee: DEBUG
