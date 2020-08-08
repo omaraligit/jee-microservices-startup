@@ -1,6 +1,17 @@
+##### creating a namespace to make all the services - pods arrenged 
+##### always stick to a namespace for your project to stay away from other stuff that kube is making or other teams
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name:  my-namespace
+
+---
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: my-namespace
   name: api-gateway-service
   labels:
     bb: jee-microservices
@@ -22,9 +33,11 @@ spec:
         imagePullPolicy: Never
 
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: my-namespace
   name: api-gateway
 spec:
   selector:

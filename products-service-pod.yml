@@ -1,6 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: my-namespace
   name: products-service
   labels:
     bb: jee-microservices
@@ -18,5 +19,5 @@ spec:
       - name: products-service
         image: jee-microservices-startup_products-service
         ports:
-        - containerPort: 8000
+        - containerPort: 8080
         imagePullPolicy: Never
