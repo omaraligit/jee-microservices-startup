@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products-service
+  labels:
+    bb: jee-microservices
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      bb: jee-microservices
+  template:
+    metadata:
+      labels:
+        bb: jee-microservices
+    spec:
+      containers:
+      - name: products-service
+        image: jee-microservices-startup_products-service
+        ports:
+        - containerPort: 8000
+        imagePullPolicy: Never
