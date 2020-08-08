@@ -1,0 +1,22 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jee-microservices
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      bb: jee-microservices
+  template:
+    metadata:
+      labels:
+        bb: jee-microservices
+    spec:
+      containers:
+      - name: jee-api-gateway
+        image: jee-microservices-startup_api-gateway
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: Never

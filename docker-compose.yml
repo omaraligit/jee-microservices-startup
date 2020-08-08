@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  api-gateway:
+    ports: 
+      - "8000:8000"
+    build:
+      context: ./apiGateway/
+      dockerfile: Dockerfile
+    networks:
+      - app-network
+
+
+  products-service:
+    ports: 
+      - "8080:8080"
+    build:
+      context: ./productsService/
+      dockerfile: Dockerfile
+    networks:
+      - app-network
+
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
